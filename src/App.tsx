@@ -50,11 +50,11 @@ function App() {
       <main className='main'>
         <div className='greeting-block'>
           <div className='greeting-text'>
+            <h1 className='greeting'>Превратите свои идеи в реальные достижения</h1>
             <h2 className='greeting-description'>
               Теперь у вас под рукой всегда есть нужные изображения, видео, музыка, 
               3D-модели, редакционные материалы и авторские продукты. 
             </h2>
-            <h1 className='greeting'>Превратите свои идеи в реальные достижения</h1>
           </div>
         </div>
 
@@ -70,7 +70,7 @@ function App() {
         </div>
 
         <div className='video-gallery'>
-          <h2 className='video-header'>
+          <h2 className='video-header font42'>
             Поможем сделать ваш продукт уникальным
           </h2>
           <div className='video-player'>
@@ -104,7 +104,7 @@ function App() {
         <div className='more-block'>
           <div className='more-block-text'>
             <div>
-              <h2 className='more-block-header'>Создавайте свои сайты в пару кликов</h2>
+              <h2 className='more-block-header font42'>Создавайте свои сайты в пару кликов</h2>
               <div className='more-block-description'>
                 Мы создали новый продукт, который поможет дизайнерам, разработчикам и небольшим стартапам создать свой сайт быстро и просто.
               </div>
@@ -131,7 +131,7 @@ function App() {
         </div>
 
         <div className='spend-money'>
-          <div className='money-description'>
+          <div className='money-description font42'>
             У нас есть два тарифа
           </div>
           <div className='switch-container'>
