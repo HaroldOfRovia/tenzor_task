@@ -56,7 +56,7 @@ export const SendForm = ( { active, setActive, time, tariffCost }: FormProps ) =
                             Без спама и навязчивости
                         </div>
                         <div className='inputbox'>
-                            <input className='input' id='email' type="email" required/>
+                            <input className='input' id='email' required/>
                             <label htmlFor="email">Email</label>
                         </div>
                         <div className='inputbox'>
