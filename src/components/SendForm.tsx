@@ -5,9 +5,10 @@ export interface FormProps{
     active: boolean;
     setActive: any;
     time: boolean;
+    tariffCost: number;
 }
 
-export const SendForm = ( { active, setActive, time }: FormProps ) => {
+export const SendForm = ( { active, setActive, time, tariffCost }: FormProps ) => {
     const [gratitude, setGratitude] = useState(false);
 
     function validationForm(e: any){
@@ -30,7 +31,8 @@ export const SendForm = ( { active, setActive, time }: FormProps ) => {
             return;
         }
 
-        let obj = {email: form[0].value, name: form[1].value, phone: form[2].value, time: time?"year":"month"};
+        let obj = {email: form[0].value, name: form[1].value, 
+            phone: form[2].value, time: time?"year":"month", tariffCost: tariffCost};
         console.log(obj);
         
         for(let i = 0; i < 3; i++){

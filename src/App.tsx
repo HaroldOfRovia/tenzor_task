@@ -10,6 +10,7 @@ import html5 from './images/html5.svg';
 import rickroll from './videos/rickroll.mp4';
 import { useRef, useState } from 'react';
 import { SendForm } from './components/SendForm';
+import { Tariff } from './components/Tariff';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
   const [playOpacity, setPlayOpacity] = useState(1);
   const [formVisibility, setFormVisibility] = useState(false);
   const [time, setTime] = useState(false);//false - месяц, true - год
+  const [tariffCost, setTariffCost] = useState(0);
 
   function playpause(){
     const video = videoRef.current;
@@ -31,7 +33,8 @@ function App() {
     }
   };
 
-  function showForm(){
+  function showForm(cost: number){
+    setTariffCost(cost);
     setFormVisibility(true);
   }
 
@@ -145,47 +148,15 @@ function App() {
             <div>Год</div>
           </div>
           <div className='choose-tariff'>
-            <div className='tariff'>
-              <div className='tariff-pic tariff-pic-low'/>
-              <div className='tariff-description'>
-                <div>
-                  <div className='tariff-type'>
-                    <div className='tariff-name'>
-                      Оптимальный
-                    </div>
-                    <div className='tariff-price'>
-                      500₽
-                    </div>
-                  </div>
-                  <div className='tariff-text'>
-                    Редактируйте фото и видео в режиме онлайн. Создавайте одностраничные сайты из готовых компонентов.
-                  </div>
-                </div>
-                <div className='round-button choosen-pay-button pay-button' onClick={showForm}>Начать бесплатно</div>
-              </div>
-            </div>
-            <div className='tariff'>
-              <div className='tariff-pic tariff-pic-high'/>
-              <div className='tariff-description'>
-                <div>
-                  <div className='tariff-type'>
-                    <div className='tariff-name'>
-                      Профи
-                    </div>
-                    <div className='tariff-price'>
-                      1000₽
-                    </div>
-                  </div>
-                  <div className='tariff-text'>
-                    Редактируйте фото и видео в режиме онлайн. Создавайте одностраничные и многостраничные сайты  из готовых компонентов.
-                  </div>
-                </div>
-                <div className='round-button pay-button'>Начать бесплатно</div>
-              </div>
-            </div>
+            <Tariff name={"Оптимальный"} cost={500} 
+              description={"Редактируйте фото и видео в режиме онлайн. Создавайте одностраничные сайты  из готовых компонентов"}
+              showForm={showForm}/>
+            <Tariff name={"Профи"} cost={1000} 
+              description={"Редактируйте фото и видео в режиме онлайн. Создавайте одностраничные и многостраничные сайты  из готовых компонентов."}
+              showForm={showForm}/>
           </div> 
         </div>
-        <SendForm active={formVisibility} setActive={setFormVisibility} time={time}/>
+        <SendForm active={formVisibility} setActive={setFormVisibility} time={time} tariffCost={tariffCost}/>
       </main>
     </div>
   );

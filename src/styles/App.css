@@ -414,83 +414,11 @@ input:checked + .slider::before {
   gap: 30px;
 }
 
-.tariff {
-  display: grid;
-  grid-template-rows: 1fr 2fr;
-  width: 370px;
-}
-
 @media (max-width: 500px){
   .choose-tariff{
     width: 90%;
   }
-  .tariff {
-    min-width: 90%;
-  }
 }
 
-.tariff-pic {
-  border-radius: 10px 10px 0 0;
-  background-size: cover;
-  background-position: center;
-}
 
-.tariff-pic-low {
-  background-image: url("../images/Image5.png");
-}
 
-.tariff-pic-high {
-  background-image: url("../images/Image2.png");
-}
-
-.tariff-description {
-  border-radius: 0 0 10px 10px;
-  border: 2px solid #EBEAED;
-  background: #34343D;
-  font-size: 22px;
-  overflow: hidden;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.tariff-description > div {
-  margin: 10% 10% 10% 10%;
-}
-
-.tariff-type {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-bottom: 22px;
-}
-
-.tariff-type > * {
-  font-size: 22px;
-}
-
-.tariff-text {
-  line-height: 26px;
-}
-
-.pay-button {
-  transition-duration: 0.2s;
-  text-align: center;
-  border: 2px solid #EBEAED;
-  min-width: fit-content;
-}
-
-.pay-button:hover {
-  background: #2c2c33;
-}
-
-.choosen-pay-button {
-  background: #E93A7D;
-  border: none;
-  min-width: fit-content;
-}
-
-.choosen-pay-button:hover {
-  background: #D71862;
-}
