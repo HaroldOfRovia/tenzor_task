@@ -54,17 +54,40 @@
     line-height: 21px;
 }
 
-.input {
+.inputbox > * {
     font-size: 22px;
     background: none;
     border: none;
-    border-bottom: 1px solid #FFFFFF99;
     color: #FFFFFF99;
+}
+
+.inputbox {
+    position: relative;
+    border-bottom: 1px solid #FFFFFF99;
     margin-bottom: 40px;
 }
 
-.input:focus {
-    outline-width: 0;
+.inputbox > label {
+    opacity: 0.55;
+    position: absolute;
+    top: 50%;
+    left: 1px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.input {
+    width: 100%;
+    outline: 0;
+}
+
+.input:focus ~ label {
+    top: -18px;
+}
+
+.input:valid ~ label {
+    top: -18px;
 }
 
 .send-button {

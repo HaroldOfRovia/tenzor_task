@@ -55,9 +55,18 @@ export const SendForm = ( { active, setActive, time, tariffCost }: FormProps ) =
                             Поможем определиться и протестировать продукт.<br/>
                             Без спама и навязчивости
                         </div>
-                        <input className='input' type='email' placeholder='Email'/>
-                        <input className='input' placeholder='Иван Иванов'/>
-                        <input className='input' placeholder='Телефон'/>
+                        <div className='inputbox'>
+                            <input className='input' id='email' type="email" required/>
+                            <label htmlFor="email">Email</label>
+                        </div>
+                        <div className='inputbox'>
+                            <input className='input' id='name' required/>
+                            <label htmlFor="name">Фамилия Имя</label>
+                        </div>
+                        <div className='inputbox'>
+                            <input className='input' id='phone' required/>
+                            <label htmlFor="phone">Телефон</label>
+                        </div>
                         <button className='send-button' type="submit">Отправить</button>
                         <div className='check-container'>
                             <input id='check' className='checkbox' type="checkbox"/>

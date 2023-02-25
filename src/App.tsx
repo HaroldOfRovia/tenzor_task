@@ -134,9 +134,9 @@ function App() {
         </div>
 
         <div className='spend-money'>
-          <div className='money-description font42'>
+          <h2 className='money-description font42'>
             У нас есть два тарифа
-          </div>
+          </h2>
           <div className='switch-container'>
             <div>Месяц</div>
 
