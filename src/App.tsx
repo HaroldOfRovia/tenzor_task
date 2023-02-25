@@ -62,14 +62,12 @@ function App() {
         </div>
 
         <div className='gallery-container'>
-          <div className='gallery'>
-            <img src={image1} className="image" alt='img1'/>
-            <img src={image2} className="image" alt='img2'/>
-            <img src={image3} className="image" alt='img3'/>
-            <img src={image4} className="image" alt='img4'/>
-            <img src={image5} className="image" alt='img5'/>
-            <img src={image6} className="image" alt='img6'/>
-          </div>
+          <img src={image1} className="image" alt='img1'/>
+          <img src={image2} className="image" alt='img2'/>
+          <img src={image3} className="image" alt='img3'/>
+          <img src={image4} className="image" alt='img4'/>
+          <img src={image5} className="image" alt='img5'/>
+          <img src={image6} className="image" alt='img6'/>
         </div>
 
         <div className='video-gallery'>
