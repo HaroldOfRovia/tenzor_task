@@ -11,7 +11,7 @@ export interface FormProps{
 export const SendForm = ( { active, setActive, time, tariffCost }: FormProps ) => {
     const [gratitude, setGratitude] = useState(false);
 
-    function validationForm(e: any){
+    function validationForm(e: any){//в тз не было описано как отображать некорректный ввод данных, потому только вывод в консоль
         const form = e.target;
         e.preventDefault();
         if (!/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i.test(form[0].value)){
@@ -79,7 +79,10 @@ export const SendForm = ( { active, setActive, time, tariffCost }: FormProps ) =
     }
     else{
         content = 
-                    <div className='form' onClick={() => { setActive(false) }}>
+                    <div className='form' onClick={() => { 
+                            setGratitude(false);
+                            setActive(false)
+                        }}>
                         <div className='form-header'>
                             Спасибо за заявку
                         </div>
@@ -91,8 +94,10 @@ export const SendForm = ( { active, setActive, time, tariffCost }: FormProps ) =
 
     return(
         <div className={active ? "form-screen" : "form-screen active"} onClick={() => { 
+            if(gratitude){
                 setGratitude(false);
                 setActive(false)
+            }
             }}>
             { content }            
         </div>
