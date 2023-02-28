@@ -104,7 +104,7 @@ function App() {
 
         <div className='more-block'>
           <div className='more-block-text'>
-            <div>
+            {/* <div> */}
               <h2 className='more-block-header font42'>Создавайте свои сайты в пару кликов</h2>
               <div className='more-block-description'>
                 Мы создали новый продукт, который поможет дизайнерам, разработчикам и небольшим стартапам создать свой сайт быстро и просто.
@@ -127,7 +127,7 @@ function App() {
                 </div>
               </div>
             </div>
-          </div>
+          {/* </div> */}
           <div className='more-block-pic'/>
         </div>
 
