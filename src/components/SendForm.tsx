@@ -10,26 +10,55 @@ export interface FormProps{
 
 export const SendForm = ( { active, setActive, time, tariffCost }: FormProps ) => {
     const [gratitude, setGratitude] = useState(false);
+    const [tooltips, setTooltips] = useState([false, false, false, false]);
 
-    function validationForm(e: any){//в тз не было описано как отображать некорректный ввод данных, потому только вывод в консоль
-        const form = e.target;
+    function validationForm(e: any) {
         e.preventDefault();
-        if (!/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i.test(form[0].value)){
-            console.log("Email is incorrect!");
-            return;
+
+        let valid = true;
+        const form = e.target;
+        
+        if (!/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i.test(form[0].value)){
+            valid = false;
+            form[0].className += ' input_invalid';
+            tooltips[0] = true;
         }
-        if (/^\s*$/.test(form[1].value)){
-            console.log("Name is incorrect!");
-            return;
+        else {
+            form[0].className = 'input';
+            tooltips[0] = false;
         }
-        if (!/^\+?(\d{1,3})?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/i.test(form[2].value)){
-            console.log("Number of phone is incorrect!");
-            return;
+
+        if (!/[a-zA-Zа-яА-Я]{2,}\s[a-zA-Zа-яА-Я]{2,}/.test(form[1].value)){
+            valid = false;
+            form[1].className += ' input_invalid';
+            tooltips[1] = true;
         }
+        else {
+            form[1].className = 'input';
+            tooltips[1] = false;
+        }
+
+        if (!/\d{11}/i.test(form[2].value)){
+            valid = false;
+            form[2].className += ' input_invalid';
+            tooltips[2] = true;
+        }
+        else {
+            form[2].className = 'input';
+            tooltips[2] = false;
+        }
+
         if (!form[4].checked){
-            console.log("Checkbox is incorrect!");
-            return;
+            valid = false;
+            tooltips[3] = true;
+        } else {
+            tooltips[3] = false;
         }
+
+        setTooltips([...tooltips]);
+
+        if(!valid)
+            return;
 
         let obj = {email: form[0].value, name: form[1].value, 
             phone: form[2].value, time: time?"year":"month", tariffCost: tariffCost};
@@ -46,7 +75,7 @@ export const SendForm = ( { active, setActive, time, tariffCost }: FormProps ) =
     let content;
     if(!gratitude){
         content = 
-                    <form className="form" onClick={ e => e.stopPropagation() } onSubmit={ validationForm }>
+                    <form className="form" onClick={ e => e.stopPropagation() } onSubmit={ validationForm } noValidate>
                         <div className='form-header'>
                             Оставить заявку
                         </div>
@@ -56,19 +85,22 @@ export const SendForm = ( { active, setActive, time, tariffCost }: FormProps ) =
                             Без спама и навязчивости
                         </div>
                         <div className='inputbox'>
-                            <input className='input' id='email' required/>
-                            <label htmlFor="email">Email</label>
+                            <input className='input' id='email' placeholder='Email' autoComplete="off"/>
+                            <div className={tooltips[0] ? "tooltip tooltip_active" : "tooltip"}>Ожидался email</div>
                         </div>
                         <div className='inputbox'>
-                            <input className='input' id='name' required/>
-                            <label htmlFor="name">Фамилия Имя</label>
+                            <input className='input' id='name' placeholder='Иван Иванов' autoComplete="off"/>
+                            <div className={tooltips[1] ? "tooltip tooltip_active" : "tooltip"}>Ожидалось имя и фамилия</div>
                         </div>
                         <div className='inputbox'>
-                            <input className='input' id='phone' required/>
-                            <label htmlFor="phone">Телефон</label>
+                            <input className='input' id='phone' placeholder='Телефон' autoComplete="off"/>
+                            <div className={tooltips[2] ? "tooltip tooltip_active" : "tooltip"}>Ожидался 11-значный номер телефона</div>
                         </div>
                         <button className='send-button' type="submit">Отправить</button>
                         <div className='check-container'>
+                            <div className='tooltip_checkbox'>
+                                <div className={tooltips[3] ? "tooltip tooltip_active" : "tooltip"}>Необходимо подетвердить</div>
+                            </div>
                             <input id='check' className='checkbox' type="checkbox"/>
                             <label htmlFor='check'/>
                             <div className='check-text'>
@@ -94,10 +126,8 @@ export const SendForm = ( { active, setActive, time, tariffCost }: FormProps ) =
 
     return(
         <div className={active ? "form-screen" : "form-screen active"} onClick={() => { 
-            if(gratitude){
                 setGratitude(false);
                 setActive(false)
-            }
             }}>
             { content }            
         </div>

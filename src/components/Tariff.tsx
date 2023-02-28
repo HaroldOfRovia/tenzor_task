@@ -11,7 +11,7 @@ export const Tariff = ({name, cost, description, showForm}: TariffData) => {
 
     return(
         <div className='tariff'>
-            <div className='tariff-pic tariff-pic-high'/>
+            <div className={cost === 500 ? 'tariff-pic tariff-pic-low' : 'tariff-pic tariff-pic-high'}/>
             <div className='tariff-description'>
                 <div>
                     <div className='tariff-type'>

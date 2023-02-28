@@ -62,12 +62,12 @@ function App() {
         </div>
 
         <div className='gallery-container'>
-          <img src={image1} className="image" alt='img1'/>
-          <img src={image2} className="image" alt='img2'/>
-          <img src={image3} className="image" alt='img3'/>
-          <img src={image4} className="image" alt='img4'/>
-          <img src={image5} className="image" alt='img5'/>
-          <img src={image6} className="image" alt='img6'/>
+          <img src={image1} className="image" style={{ gridRow: "1/3" }} alt='img1'/>
+          <img src={image3} className="image" style={{ gridRow: "1/4" }} alt='img3'/>
+          <img src={image4} className="image" style={{ gridRow: "1/2" }} alt='img4'/>
+          <img src={image2} className="image" style={{ gridRow: "3/5" }} alt='img2'/>
+          <img src={image5} className="image" style={{ gridRow: "4/5" }} alt='img5'/>
+          <img src={image6} className="image" style={{ gridRow: "2/5" }} alt='img6'/>
         </div>
 
         <div className='video-gallery'>
